@@ -1,0 +1,61 @@
+body {
+    background-color: blanchedalmond;
+}
+
+#DevicesContainer {
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.nav {
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+
+#SignIn {
+    margin-left: 200px;
+    border: 1px solid blue;
+    border-radius: 25px;
+}
+
+#SignIn:hover {
+    background-color: white;
+
+}
+
+
+
+.Device {
+    border: 1px dotted black;
+    background-color: white;
+    width: 210px;
+    margin: 30px;
+
+    border-radius: 25px;
+    box-shadow: 4px 9px grey;
+}
+
+.Device:hover {
+    background-color:orange;
+}
+
+
+
+.DeviceImage {
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+
+    /* Center the Image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.DeviceInfor {
+    text-align: center;
+}
+
