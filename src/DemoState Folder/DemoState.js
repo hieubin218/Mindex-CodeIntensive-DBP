@@ -59,3 +59,6 @@ export default class DemoState extends Component {
      */
 
     
+// muốn test thử giá trị sau khi setState --> console
+// vì this.setState là hàm bất đồng bộ, và console là đồng bộ
+// --> this.setState({...}, () => {console.log("..."); });
