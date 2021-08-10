@@ -1,0 +1,5 @@
+.complete {
+    color: red;
+    /* Cross the words and sentence out */
+    text-decoration: line-through;
+}
