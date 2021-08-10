@@ -1,0 +1,39 @@
+.car {
+    background-color: antiquewhite;
+    padding: 64px 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.car_left{
+    grid-column: 1/2;
+}
+
+
+.car_left img {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+
+}
+
+.car_right {
+    grid-column: 2/3;
+}
+
+.button {
+    padding: 12px 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.red {
+    background-color: red;
+}
+
+
+.black {
+    background-color: black;
+    color: white;
+}
