@@ -1,10 +1,11 @@
-// import logo from "./logo.svg";
 import './App.css';
-import Car from './CarFolder/Car.js';
-import StoreComponent from './SmartPhoneStore/StoreComponent';
+// import Car from './Car Folder/Car.js';
+// import DemoState from './DemoState Folder/DemoState';
+
+import SmartPhoneStore from './SmartPhoneStore Folder/SmartPhoneStore';
+// import TodoList from "./Components Folder/TodoList";
 
 
-// Auto Import extension 
 
 
 function App() {
@@ -14,12 +15,16 @@ function App() {
       {/* <h1> App Component </h1>
       <TodoList /> */}
       {/* <Car /> */}
-      <StoreComponent />
+      <SmartPhoneStore />
+      {/* <DemoState /> */}
     </div>
   );
 };
 
 export default App;
+
+
+
 
 // NOTES:
   // Functional Component
