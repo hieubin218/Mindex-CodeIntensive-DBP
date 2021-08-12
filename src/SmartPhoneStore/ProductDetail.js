@@ -2,13 +2,23 @@ import React, { Component } from 'react';
 
 class ProductDetail extends Component {
     render() {
+
+        // Destructoring: Receive props data from Parents Component
+        // info will be an small objects of parents objects in array
+        // info = objects, infor {backCamera, os, screen, frontCamera}
+
+        const {name, img, info, ram, rom } = this.props.productDetail;
+        const {backCamera, frontCamera, os, screen} = info;
+
+
+        // JSX function
         return (
             <div className="mt-5">
                 <h3>Product Detail</h3>
                 <div className="row">
                     <div className="col-md-4">
-                        <h4>Phone</h4>
-                        <img src="..." className="card-img-top" />;
+                        <h4 className="text-center mb-2">{name}</h4>
+                        <img src={img} className="card-img-top" />;
                     </div>
 
                     <div className="col-md-8">
@@ -21,27 +31,27 @@ class ProductDetail extends Component {
                             <tbody>
                                 <tr>
                                     <td>Màn hình</td>
-                                    <td>Hi</td>
+                                    <td>{screen}</td>
                                 </tr>
                                 <tr>
                                     <td>Hệ điều hành</td>
-                                    <td>Hi</td>
+                                    <td>{os}</td>
                                 </tr>
                                 <tr>
                                     <td>Camera Trước</td>
-                                    <td>h</td>
+                                    <td>{frontCamera}</td>
                                 </tr>
                                 <tr>
                                     <td>Camera Sau</td>
-                                    <td>h</td>
+                                    <td>{backCamera}</td>
                                 </tr>
                                 <tr>
                                     <td>RAM</td>
-                                    <td>h</td>
+                                    <td>{ram}</td>
                                 </tr>
                                 <tr>
                                     <td>ROM</td>
-                                    <td>h</td>
+                                    <td>{rom}</td>
                                 </tr>
                                 
                             </tbody>

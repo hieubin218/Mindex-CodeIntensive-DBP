@@ -53,21 +53,21 @@ class SmartPhoneStore extends Component {
                 }
             ],
 
-            // Thay doi giao dien this.state
-            selectedProduct: {
+            // Thay doi giao dien this.state (default giao diện)
+            selectedProduct:{
                 "id": 1,
-                    "name": "Samsung Galaxy A10",
-                    "price": "40906000",
-                    "img": "Assets-Image/samsung-galaxy.jpg",
-                    "info": {
-                        "screen": "AMOLED Full HD 9.0",
-                        "os": "Android 9.0",
-                        "frontCamera": "20MP",
-                        "backCamera": "Chính 48MB, phụ 30MP"
-                    },
-                    "ram": "4 GB",
-                    "rom": "64 GB"
-            },
+                "name": "Samsung Galaxy A10",
+                "price": "40906000",
+                "img": "Assets-Image/samsung-galaxy.jpg",
+                "info": {
+                    "screen": "AMOLED Full HD 9.0",
+                    "os": "Android 9.0",
+                    "frontCamera": "20MP",
+                    "backCamera": "Chính 48MB, phụ 30MP"
+                },
+                "ram": "4 GB",
+                "rom": "64 GB"
+            }
         }
     }
 
@@ -89,6 +89,7 @@ class SmartPhoneStore extends Component {
 
     render() {
         const {products} = this.state;
+        const {selectedProduct} = this.state;
         return (
             <div className="container pt-5">
                 <h1 className="text-primary text-center">Thế Giới Di Động</h1>
@@ -99,7 +100,9 @@ class SmartPhoneStore extends Component {
                 <ProductList 
                     phoneProducts={products}
                     onSelectedProduct = {this.onSelectedProduct}  />
-                <ProductDetail />
+
+
+                <ProductDetail productDetail={selectedProduct} />
                 
             </div>
         );
