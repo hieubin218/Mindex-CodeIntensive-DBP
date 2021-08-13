@@ -14,14 +14,14 @@ class ProductDetail extends Component {
         // JSX function
         return (
             <div className="mt-5">
-                <h3 className="text-center" style={{margin: "20px"}}> Product Detail</h3>
+                <h3 className="text-center text-info" style={{margin: "20px"}}> Thông Tin Kĩ Thuật Số</h3>
                 <div className="row">
                     <div className="col-md-4">
-                        <h4 className="text-center mb-2">{name}</h4>
-                        <img src={img} className="card-img-top" />;
+                        <h4 className="text-center text-danger mb-2">{name}</h4>
+                        <img src={img}  className="card-img-top" />
                     </div>
 
-                    <div className="col-md-8">
+                    <div className="col-md-8" style={{padding: "30px"}}>
                         <div className="table">
                             <thead>
                                 <tr colSpan="2">
@@ -30,27 +30,27 @@ class ProductDetail extends Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Màn hình</td>
+                                    <td><b>Màn hình</b></td>
                                     <td>{screen}</td>
                                 </tr>
                                 <tr>
-                                    <td>Hệ điều hành</td>
+                                    <td><b>Hệ điều hành</b></td>
                                     <td>{os}</td>
                                 </tr>
                                 <tr>
-                                    <td>Camera Trước</td>
+                                    <td><b>Camera Trước</b></td>
                                     <td>{frontCamera}</td>
                                 </tr>
                                 <tr>
-                                    <td>Camera Sau</td>
+                                    <td><b>Camera Sau</b></td>
                                     <td>{backCamera}</td>
                                 </tr>
                                 <tr>
-                                    <td>RAM</td>
+                                    <td><b>RAM</b></td>
                                     <td>{ram}</td>
                                 </tr>
                                 <tr>
-                                    <td>ROM</td>
+                                    <td><b>ROM</b></td>
                                     <td>{rom}</td>
                                 </tr>
                                 

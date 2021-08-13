@@ -2,27 +2,35 @@ import React, { Component } from 'react';
 
 class ProductItem extends Component {
     render() {
-        const {name, price, img, id} = this.props.product;
-        const {onSelectedProduct, onCart} = this.props;
+        const {name, img, price, id} = this.props.eachProduct;
+        const {onSelectedProduct} = this.props;
+        const {onAddtoCart} = this.props;
+        
+      
         return (
-            <div className="card p-2" style={{width: '18rem'}}>
-                <img src={img} 
-                    className="card-img-top" 
-                    alt="..." 
-                /> 
-                <div className="card-body">
-                    <h5 className="card-title mb-3">{name}</h5>
-                    <p>Price: {price} VND </p>
-                    <a  onClick={ () => onSelectedProduct(id)} className="btn btn-success">
-                        Xem Chi Tiet
-                    </a>
+            <div>
+                <div className="card p-2" style={{width: "18rem"}}>
+                    <img src={img} className="card-img-top" alt="..." style={{padding: "20px"}}/>
+                    <div className="card-body">
+                        <h5 className="card-title mb-3">{name}</h5>
+                        <p className="card-text"><b>Price: </b> {price} VND</p>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <a onClick={ () => onSelectedProduct(id)} className="btn btn-success">
+                                Xem Chi Tiết
+                            </a>
 
-                    <a onClick={ () => onCart(id)} className="btn btn-danger" style={{marginLeft: "10px"}}>
-                       Thêm Cart
-                    </a>
+                            {/**Nhận data của product được bấm vào (this.props.eachProduct) để add to Cart */}
+                            <a onClick={ () => onAddtoCart(this.props.eachProduct)} className="btn btn-danger" style={{marginLeft: "10px"}}>
+                                Add to Cart
+                            </a>
+                        </div>
 
+                    </div>
                 </div>
-            </div>      
+
+
+            </div>
+            
         );
     }
 }

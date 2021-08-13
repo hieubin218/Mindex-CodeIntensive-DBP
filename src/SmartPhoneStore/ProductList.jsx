@@ -6,28 +6,34 @@ import ProductItem from './ProductItem';
 export default class ProductList extends Component {
     render() {
         // Nhận props data của Component Cha truyền xuống là SmartPhoneStore
-        const {phoneProducts, onSelectedProduct, onCart} = this.props;
+        const {phoneProducts, onSelectedProduct, onAddtoCart} = this.props;
+        
         return (
             <div className="row">
-                <h3 className="text-center" style={{margin: "30px"}}>Product List</h3>
+                <h3 className="text-center text-info" style={{margin: "30px"}}> Sản Phẩm Hiện Nay</h3>
+                
+                {/** Map all products of Objects Array */}
                 {
-                    phoneProducts.map((productItem, index) => {
+                    phoneProducts.map((phoneInfor, index) => {
                         return (
-                            <div className="col-4 col-md-4">
-                                {/*Truyền props onSelectedProduct và product xuống ProductItem */}
+                            <div className="col-4 col-">
                                 <ProductItem 
+                                    eachProduct={phoneInfor} 
                                     onSelectedProduct={onSelectedProduct}
-                                    onCart={onCart}
-                                    product={productItem} 
+                                    onAddtoCart = {onAddtoCart}
                                     key={index} />
+
                             </div>
-                        ); 
+                        );
                     })
-                };
+                };       
             </div>
-        );
-    }
+        )   
+    }   
+    
 }
+
+
 
 
 // grid system on Boostrap
