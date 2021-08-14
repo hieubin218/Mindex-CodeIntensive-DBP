@@ -161,7 +161,7 @@ class SmartPhoneStore extends Component {
     onDeleteProduct = (id) => {
         const currentCart = this.state.cart;
         const idxItemInCart = currentCart.findIndex((item) => item.id === id);
-        currentCart.splice(idxItemInCart);
+        currentCart.splice(idxItemInCart, 1);
         this.setState({
             cart: currentCart,
         })
