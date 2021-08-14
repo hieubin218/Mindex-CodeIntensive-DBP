@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 export default class ProductCheckout extends Component {
     render() {
         // receive method props from parents component
-        const {cart, onPlusAmountCartItem, onMinusAmountCartItem} = this.props;
+        const {cart, onHandleAmountCartItemChange, onDeleteProduct} = this.props;
         
 
         return (
@@ -40,9 +40,9 @@ export default class ProductCheckout extends Component {
                                                     <img src={img} style={{width: "32px", height: "auto", objectFit:"cover"}} />
                                                 </td>
                                                 <td>{name}</td>
-                                                <td>
+                                                <td> 
                                                     <button className="btn btn-primary" 
-                                                            onClick={() => onMinusAmountCartItem(id)}
+                                                            onClick={() =>onHandleAmountCartItemChange(id, -1)}
 
                                                             // Stop button when amount is 1
                                                             disabled={amount <= 1 ? true: false}>
@@ -50,13 +50,13 @@ export default class ProductCheckout extends Component {
                                                     </button>
                                                     {/** make space between */}
                                                     <span className="mx-2">{amount}</span>
-                                                    <button className="btn btn-primary" onClick={() => onPlusAmountCartItem(id)}>+</button>
+                                                    <button className="btn btn-primary" onClick={() => onHandleAmountCartItemChange(id, +1)}>+</button>
                                                 </td>
 
                                                 <td>{price}</td>
                                                 <td>{price*amount}</td>
                                                 <td>
-                                                    <a href="#" className="btn btn-danger">Delete</a>
+                                                    <a href="#" className="btn btn-danger" onClick={() => onDeleteProduct(id)}>Delete</a>
                                                 </td>
                                                 
                                             </tr>

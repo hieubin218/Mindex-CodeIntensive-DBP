@@ -124,23 +124,44 @@ class SmartPhoneStore extends Component {
 
     
     // Add amount of product
-    onPlusAmountCartItem = (id) => {
+    // onPlusAmountCartItem = (id) => {
+    //     const currentCart = this.state.cart;
+    //     const idxItemInCart = currentCart.findIndex((item) => item.id === id);
+
+    //     // Update amount number
+    //     currentCart[idxItemInCart].amount +=1;
+    //     this.setState({
+    //         cart: currentCart,
+    //     })
+
+    // }
+
+    // Minus amount of product
+    // onMinusAmountCartItem = (id) => {
+    //     const currentCart = this.state.cart;
+    //     const idxItemInCart = currentCart.findIndex((item) => item.id === id);
+    //     currentCart[idxItemInCart].amount -=1;
+    //     this.setState({
+    //         cart: currentCart,
+    //     })
+    // }
+
+    // Add and Minus Amount of Product
+    onHandleAmountCartItemChange = (id, value) => {
         const currentCart = this.state.cart;
         const idxItemInCart = currentCart.findIndex((item) => item.id === id);
-
-        // Update amount number
-        currentCart[idxItemInCart].amount +=1;
+        currentCart[idxItemInCart].amount += value;
         this.setState({
             cart: currentCart,
         })
 
     }
 
-    // Minus amount of product
-    onMinusAmountCartItem = (id) => {
+    // on Delete the Product
+    onDeleteProduct = (id) => {
         const currentCart = this.state.cart;
         const idxItemInCart = currentCart.findIndex((item) => item.id === id);
-        currentCart[idxItemInCart].amount -=1;
+        currentCart.splice(idxItemInCart);
         this.setState({
             cart: currentCart,
         })
@@ -184,8 +205,10 @@ class SmartPhoneStore extends Component {
                 <ProductDetail productDetail={selectedProduct} />
 
                 <ProductCheckout cart={this.state.cart} 
-                                onPlusAmountCartItem={this.onPlusAmountCartItem}
-                                onMinusAmountCartItem={this.onMinusAmountCartItem} />
+                                // onPlusAmountCartItem={this.onPlusAmountCartItem}
+                                // onMinusAmountCartItem={this.onMinusAmountCartItem}
+                                onHandleAmountCartItemChange={this.onHandleAmountCartItemChange}
+                                onDeleteProduct={this.onDeleteProduct} />
                 
             </div>
         );
