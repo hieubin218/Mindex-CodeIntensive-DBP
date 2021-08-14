@@ -5,6 +5,10 @@ export default class ProductCheckout extends Component {
     render() {
         // receive method props from parents component
         const {cart, onHandleAmountCartItemChange, onDeleteProduct} = this.props;
+        let totalPrice = 0;
+        for (let cartItem of cart) {
+            totalPrice += (cartItem.amount * cartItem.price);
+        }
         
 
         return (
@@ -57,14 +61,27 @@ export default class ProductCheckout extends Component {
                                                 <td>{price*amount}</td>
                                                 <td>
                                                     <a href="#" className="btn btn-danger" onClick={() => onDeleteProduct(id)}>Delete</a>
-                                                </td>
-                                                
+                                                </td>    
                                             </tr>
+                                            
+                                            
                                         );
                                     })
+                                    
+                                    
+
                                 ) : (
                                     <p>Cart Empty, Please select your Item </p>
                                 )}
+
+                                    {/** Total Price */ }
+                                {cart.length >0 ?
+                                    <tr>
+                                    <td><b>Total Price</b></td>
+                                    <td>{totalPrice} VND</td>
+                                    </tr>
+                                    : 0
+                                    }
                             </tbody>
                         </table>
                     </div>
