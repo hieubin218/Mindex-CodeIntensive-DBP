@@ -7,6 +7,9 @@ class StudentForm extends Component {
         studentID: "",
         studentPhoneNum: "",
         studentEmail: "",
+        studentMathScore: "",
+        studentPhysicScore: "",
+        studentChemScore: "",
     }
 
     onChangeHandler = (event) => {
@@ -32,7 +35,7 @@ class StudentForm extends Component {
 
                         <div className="col-6">
                             <div className="form-group">
-                                <label htmlFor="studentID">Mã Sinh Viên</label>
+                                <label htmlFor="studentID">Student ID</label>
                                 <input 
                                     type="text"
                                     name="studentID"
@@ -45,7 +48,7 @@ class StudentForm extends Component {
 
                         <div className="col-6">
                             <div className="form-group">
-                                <label htmlFor="studentName">Họ và Tên</label>
+                                <label htmlFor="studentName">Student Fullname</label>
                                 <input 
                                     type="text"
                                     name="studentName"
@@ -58,7 +61,7 @@ class StudentForm extends Component {
 
                         <div className="col-6">
                             <div className="form-group">
-                                <label htmlFor="studentPhoneNum">Số Điện Thoại</label>
+                                <label htmlFor="studentPhoneNum">Phone Number</label>
                                 <input 
                                     type="text"
                                     name="studentPhoneNum"
@@ -71,10 +74,47 @@ class StudentForm extends Component {
 
                         <div className="col-6">
                             <div className="form-group">
-                                <label htmlFor="studentEmail">Địa Chỉ Email</label>
+                                <label htmlFor="studentEmail">Email Address</label>
                                 <input 
                                     type="text"
                                     name="studentEmail"
+                                    className="form-control"
+                                    aria-describedby="helpId"
+                                    onChange={this.onChangeHandler}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-6">
+                            <div className="form-group">
+                                <label htmlFor="studentMathScore">Math Score</label>
+                                <input 
+                                    type="text"
+                                    name="studentMathScore"
+                                    className="form-control"
+                                    aria-describedby="helpId"
+                                    onChange={this.onChangeHandler}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="form-group">
+                                <label htmlFor="studentPhysicScore">Physics Score</label>
+                                <input 
+                                    type="text"
+                                    name="studentPhysicScore"
+                                    className="form-control"
+                                    aria-describedby="helpId"
+                                    onChange={this.onChangeHandler}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="form-group">
+                                <label htmlFor="studentID">Chemistry Score</label>
+                                <input 
+                                    type="text"
+                                    name="studentChemScore"
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}

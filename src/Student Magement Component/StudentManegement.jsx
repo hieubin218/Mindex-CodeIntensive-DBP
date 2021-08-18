@@ -9,20 +9,34 @@ class StudentManegement extends Component {
     }
 
     onAddStudent = (student) => { 
-        const studentInformation = this.state.students;
-        const studentIndex = studentInformation.findIndex((eachStudent) => eachStudent.studentID === student.studentID);
-        if ( studentIndex === -1) {
-            this.setState({
+        this.setState({
             students: [...this.state.students, student],
-        }, () => {console.log(this.state.students)});
-        } else {
-            const currentStudents = this.state.students;
-            currentStudents[studentIndex].studentID = student.studentID;
-            this.setState({
-               students: currentStudents,
-        });
-    }}
+        // const studentInformation = this.state.students;
+        // const studentIndex = studentInformation.findIndex((eachStudent) => eachStudent.studentID === student.studentID);
+        // if ( studentIndex === -1) {
+        //     this.setState({
+        //     students: [...this.state.students, student],
+        // });
+        // } else {
+        //     const currentStudents = this.state.students;
+        //     currentStudents[studentIndex].studentID = student.studentID;
+        //     this.setState({
+        //        students: currentStudents,
+        // });
+    })
+}
 
+
+    // Delete Students Information at StudentTable
+    onDeleteStudent = (id) => {
+        const currentStudentList = this.state.students;
+        const findIdxOfStudent = currentStudentList.findIndex((student) => student.id === id);
+        currentStudentList.splice(findIdxOfStudent, 1);
+
+        this.setState({
+            students: currentStudentList,
+        })  
+    }
 
 
 
@@ -36,7 +50,7 @@ class StudentManegement extends Component {
                 </h1>
 
                 <StudentForm onAddStudent={this.onAddStudent} />
-                <StudentTable students={students} />
+                <StudentTable students={students} onDeleteStudent={this.onDeleteStudent} />
                 
             </div>
         );
