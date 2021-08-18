@@ -1,0 +1,5 @@
+.menu {
+    background-color: var(--bg-color-dark);
+    color: var(--white-color);
+    border-radius: 8px;
+}
