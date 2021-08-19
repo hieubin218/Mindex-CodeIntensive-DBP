@@ -43,8 +43,8 @@ export default class Car extends Component {
 
                     <button
                         className="button white"
-                        onClick={() => this.changeColor("Assets-Image/white-car.png")}>
-                            White
+                        onClick = { () => this.changeColor("Assets-Image/white-car.png")}>
+                           White
                     </button>
 
                 </div>
