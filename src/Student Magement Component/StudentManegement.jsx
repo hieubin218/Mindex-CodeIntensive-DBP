@@ -11,8 +11,21 @@ class StudentManegement extends Component {
     onAddStudent = (student) => { 
         this.setState({
             students: [...this.state.students, student],
+        // const studentInformation = this.state.students;
+        // const studentIndex = studentInformation.findIndex((eachStudent) => eachStudent.studentID === student.studentID);
+        // if ( studentIndex === -1) {
+        //     this.setState({
+        //     students: [...this.state.students, student],
+        // });
+        // } else {
+        //     const currentStudents = this.state.students;
+        //     currentStudents[studentIndex].studentID = student.studentID;
+        //     this.setState({
+        //        students: currentStudents,
+        // });
     })
 }
+
 
     // Delete Students Information at StudentTable
     onDeleteStudent = (id) => {
@@ -24,6 +37,8 @@ class StudentManegement extends Component {
             students: currentStudentList,
         })  
     }
+
+
 
     render() {
         // Truyền vào Object để gửi xuống Comp Con 
@@ -41,4 +56,5 @@ class StudentManegement extends Component {
         );
     }
 }
+
 export default StudentManegement;

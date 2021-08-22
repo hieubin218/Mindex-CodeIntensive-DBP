@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 
 // Component Con: Form điền thông tin sinh viên 
-const initialState = {
+class StudentForm extends Component {
+    state={
         studentName: "",
         studentID: "",
         studentPhoneNum: "",
-        studentEmail: "",
+        studentEmail: "", 
         studentMathScore: "",
-        studentPhysicScore: "" ,
+        studentPhysicScore: "",
         studentChemScore: "",
-}
+    }
 
-class StudentForm extends Component {
-    // Default State (empty) for input 
-    state=initialState;
-
-    // Update value along with typical state property (name)
+    // Liên tục cập nhật giá trị được nhập vào sau khi submit 
     onChangeHandler = (event) => {
         const {name, value} = event.target;
         this.setState({
@@ -23,37 +20,25 @@ class StudentForm extends Component {
         });
     };
 
-    // Reset Form after input and Submit
-    onResetForm = () => {
-        this.setState(initialState);
-    }
-
-    // Method: prevent the form actually submitted (to execute the form)
     onSubmitHandler = (event) => {
         event.preventDefault();
-
-        // Đưa Object Student ra Component Cha when button clicked
-        this.props.onAddStudent(this.state);
-        // Sau đó reset lại form default 
-        this.onResetForm(); // this.setState(initialState) --> không cần hàm onResetForm
     }
 
 
     render() {
-        const {studentName, studentID, studentPhoneNum, studentEmail, studentMathScore, studentPhysicScore, studentChemScore} = this.state;
-        // const {studentID} = this.state;
+        const {onAddStudent} = this.props;
         return (
             <div>
                 <h4 className="text-danger" style={{marginTop: "60px"}}>Thông Tin Sinh Viên</h4>
                 <form onSubmit={this.onSubmitHandler}>
                     <div className="row">
+
                         <div className="col-6">
                             <div className="form-group">
                                 <label htmlFor="studentID">Student ID</label>
                                 <input 
                                     type="text"
                                     name="studentID"
-                                    value={studentID}
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}
@@ -67,7 +52,6 @@ class StudentForm extends Component {
                                 <input 
                                     type="text"
                                     name="studentName"
-                                    value={studentName}
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}
@@ -81,7 +65,6 @@ class StudentForm extends Component {
                                 <input 
                                     type="text"
                                     name="studentPhoneNum"
-                                    value={studentPhoneNum}
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}
@@ -95,7 +78,6 @@ class StudentForm extends Component {
                                 <input 
                                     type="text"
                                     name="studentEmail"
-                                    value={studentEmail}
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}
@@ -109,7 +91,6 @@ class StudentForm extends Component {
                                 <input 
                                     type="text"
                                     name="studentMathScore"
-                                    value={studentMathScore}
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}
@@ -122,7 +103,6 @@ class StudentForm extends Component {
                                 <input 
                                     type="text"
                                     name="studentPhysicScore"
-                                    value={studentPhysicScore}
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}
@@ -135,7 +115,6 @@ class StudentForm extends Component {
                                 <input 
                                     type="text"
                                     name="studentChemScore"
-                                    value={studentChemScore}
                                     className="form-control"
                                     aria-describedby="helpId"
                                     onChange={this.onChangeHandler}
@@ -144,12 +123,13 @@ class StudentForm extends Component {
                         </div>
                     </div>
 
-                    {/** Hàm onClick={addStudent} đã được thêm vào ở onSubmitHandler 
-                    Không cần onClick ở button nữa */}
                     <button type="submit" 
-                            className="mt-4 btn btn-primary">
+                            className="mt-4 btn btn-primary" 
+                            onClick={() => onAddStudent(this.state)}>
                             Thêm Sinh Viên
                     </button>
+                    
+
                 </form>
                 
             </div>
