@@ -1,0 +1,12 @@
+h1 {
+    color: rgb(211, 14, 14);
+}
+
+
+.byRow {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-left: 20px;
+
+}
