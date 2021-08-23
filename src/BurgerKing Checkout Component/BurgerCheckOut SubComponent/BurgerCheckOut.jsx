@@ -7,16 +7,23 @@ export default class BurgerCheckOut extends Component {
     render() {
         // Receive props from parents Component
         const {menu, onHandleAmountIngredient, onResetOrder, makeOrder, onMakeOrder} = this.props;
-        const {toppingKey} = this.props.menu;
+
 
         // Method: Calculate Total Price
+            // item.price --> $1, 2, 3
+            // item.toppingKey --> salad, meat
+            // makeOder[salad] = $1.75
         let totalPrice = 0;
-        for (let item in menu) {
-            // totalPrice += item[toppingKey] * makeOrder[toppingKey]
-            console.log(makeOrder)
-            console.log(makeOrder[toppingKey])
-            
+        let Tax = 0;
+        let priceAfterTax = 0;
+        for (let item of menu) {
+            totalPrice += item.price * makeOrder[item.toppingKey];
+            Tax = Math.round((totalPrice * 0.1) * 100) / 100;
+            priceAfterTax = totalPrice + Tax;
+
         }
+
+        
 
 
 
@@ -63,10 +70,22 @@ export default class BurgerCheckOut extends Component {
                                         </tr>
                                     );
                             })}
-                        <tr className="fw-bold">
-                            <td>Total Cost</td>
-                            <td>$ {totalPrice}</td>
-                        </tr>
+                        
+                            <tr className="fw-bold">
+                                <td>Total Cost (Not Tax)</td>
+                                <td>$ {totalPrice}</td>
+                            </tr>
+
+                            <tr className="fw-bold">
+                                <td>Sale Tax (10%)</td>
+                                <td>$ {Tax}</td>
+                            </tr>
+
+                            <tr className="fw-bold">
+                                <td>ToTal Cost (Taxed)</td>
+                                <td>$ {priceAfterTax}</td>
+                            </tr>
+                       
                     </tbody>
                 </table>
 
