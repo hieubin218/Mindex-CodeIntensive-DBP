@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import BurgerCheckOut from '../BurgerCheckOut SubComponent/BurgerCheckOut';
 import BurgerBuilder from '../BurgerBuilder SubComponent/BurgerBuilder';
-import "./BurgerMenu.css";
+import "./BurgerStore.css";
 
 class BurgerMenu extends Component {
     constructor(props) {
@@ -9,22 +9,22 @@ class BurgerMenu extends Component {
         this.state = {
             menu: [
                 {
-                    foodID: 1,
+                    toppingKey: "salad",
                     name: "Salad",
                     price: 1.75,
                 },
                 {
-                    foodID: 2,
+                    toppingKey: "cheese",
                     name: "Cheese",
                     price: 3.0,
                 },
                 {
-                    foodID: 3,
+                    toppingKey: "meat",
                     name: "Meat",
                     price: 5.75,
                 },
                 {
-                    foodID: 4,
+                    toppingKey: "bacon",
                     name: "Bacon",
                     price: 5.25,
                 }
@@ -42,12 +42,18 @@ class BurgerMenu extends Component {
     }
 
     // Method (More and Less) button
-    onHandleAmountIngredient = (id) => {
-        console.log(id);
+    // type là toppingKey [salad, cheese, meat, bacon] và value [-1 (less) và +1 (more)]
+    onHandleAmountIngredient = (type, value) => {
+        this.setState({
+            makeOrder: {
+                ...this.state.makeOrder,
+                [type]: this.state.makeOrder[type] + value,
+            },
+        })
     }
 
 
-    // Reset Button
+    // Reset Button by setState back to default this.state
     onResetOrder = () => {
         this.setState({
             makeOrder: {
@@ -57,6 +63,12 @@ class BurgerMenu extends Component {
                 bacon: 0,
             }})
     }
+
+    onMakeOrder = () => {
+        alert("Your Order has been successfully submited");
+    }
+
+
 
     render() {
         const {menu, makeOrder} = this.state;
@@ -73,6 +85,8 @@ class BurgerMenu extends Component {
                         menu={menu} 
                         onHandleAmountIngredient={this.onHandleAmountIngredient}
                         onResetOrder = {this.onResetOrder}
+                        onMakeOrder = {this.onMakeOrder}
+            
                     />
                 </div>
             </div>
