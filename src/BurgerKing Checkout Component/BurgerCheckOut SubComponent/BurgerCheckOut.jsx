@@ -22,11 +22,7 @@ export default class BurgerCheckOut extends Component {
             priceAfterTax = totalPrice + Tax;
 
         }
-
         
-
-
-
         return (
             <div className="menu">
                <h4 className="text-center pd-3">Custom your Burger</h4>
