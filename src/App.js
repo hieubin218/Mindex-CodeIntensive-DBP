@@ -1,12 +1,11 @@
 import './App.css';
 // import Car from './Car Folder/Car.js';
 // import DemoState from './DemoState Folder/DemoState';
-
-import SmartPhoneStore from './SmartPhoneStore Folder/SmartPhoneStore';
+// import SmartPhoneStore from './SmartPhoneStore/SmartPhoneStore';
 // import TodoList from "./Components Folder/TodoList";
-
-
-
+// import StudentManegement from "./Student Magement Component/StudentManegement";
+// import BurgerStore from "./BurgerKing Checkout Component/BurgerStore SubComponent/BurgerStore";
+import ToDoApp from "./Todo App Component/ToDoApp";
 
 function App() {
   
@@ -15,8 +14,11 @@ function App() {
       {/* <h1> App Component </h1>
       <TodoList /> */}
       {/* <Car /> */}
-      <SmartPhoneStore />
+      {/* <SmartPhoneStore /> */}
       {/* <DemoState /> */}
+      {/* <StudentManegement /> */}
+      {/* <BurgerStore /> */}
+      <ToDoApp />
     </div>
   );
 };
