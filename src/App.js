@@ -1,90 +1,60 @@
+import React, {Component} from "react";
 import './App.css';
-// import Car from './Car Folder/Car.js';
-// import DemoState from './DemoState Folder/DemoState';
-// import SmartPhoneStore from './SmartPhoneStore/SmartPhoneStore';
-// import TodoList from "./Components Folder/TodoList";
-// import StudentManegement from "./Student Magement Component/StudentManegement";
-// import BurgerStore from "./BurgerKing Checkout Component/BurgerStore SubComponent/BurgerStore";
-import ToDoApp from "./Todo App Component/ToDoApp";
+import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
+
+// Router: Component bao bọc tất cả các component khác của routing
+// Route: Render component khi match với path
+// Switch: chỉ render route đầu tiên khi match
+// Link: giống như link nhưng có thêm active classnames
+import Home from "./Containers/Home";
+import About from "./Containers/About";
+import Dashboard from "./Containers/Dashboard";
+import Navbar from "./Layouts/Navbar";
+
 
 function App() {
   
   return (
-    <div className="App">
-      {/* <h1> App Component </h1>
-      <TodoList /> */}
-      {/* <Car /> */}
-      {/* <SmartPhoneStore /> */}
-      {/* <DemoState /> */}
-      {/* <StudentManegement /> */}
-      {/* <BurgerStore /> */}
-      <ToDoApp />
-    </div>
+    // Connect tất cả các Component lớn với nhau --> Bọc trong BrowserRouter
+    // <Link> tag: đóng vai trò như <a> tag, props tên là to="url"
+    // <Switch> tag: switch giữa các component, pages khác nhau
+      // to="..." of <Link> = path="..." of <Route>: phải tương ứng với nhau
+    // Những Component không thay đổi (vd: navbar) --> bỏ ngoài <Switch>
+
+    <BrowserRouter>
+      <Navbar />
+      {/* <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      </ul> */}
+
+      <Switch>
+        {/** Ứng với những trang tương ứng
+          truyền vào props: path */}
+        <Route path="/" exact component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/dashboard" component={Dashboard} />
+
+          {/** Cách khác về <Route>
+            1. <Route exact path="/">
+                  <Home />
+               </Route>
+            2. <Route path="/" exact render={ () => <Home /> } />
+            
+             */}
+       
+
+      </Switch>
+
+    </BrowserRouter>
   );
 };
 
 export default App;
-
-
-
-
-// NOTES:
-  // Functional Component
-  // HTML and JS code combination (called JSX) must be packaged in return()
-
-  // This file only allow 1 div tag
-  // Khi đưa biến vào trong file này, phải dùng {}
-
-  // JSX name: class --> className
-  // single tag (self-closing tag) must have dấu sẹc : <img />
-
-  // Conditional Rendering: render có điều kiện
-
-/**
- * Functional Programming: code cho ReactJS 
- * Top-down programming: code function chạy từ trên xuống dưới
- * Object-oriented programming: Lập trình hướng đối tượng
- * Event-driven programming
- */ 
-
-
-
-
-// Front-end cần consider luồng code như thế này trước khi hand on a project
-/* 
-
-
-
-  - ToDoWrapper: the web
-    0. Header
-    1. TodoInput
-    2. TodoList
-      - ToDoItem: include Props
-        +
-        +
-      - ToDoItem
-        +
-        +
-      - ToDoItem
-        +
-      - ToDoItem
-        +
-    3. TodoStatus
-      - Button: all
-      - Button: active
-      - Button completed
-*/
-
-
-
-// EXPORT DEFAULT and normal Export difference:
-// Khi xài Export default, nghĩa là sẽ export nguyên cả file lớn đó
-// Khi xài export default, thì ko thể xài export normal 
-    /** Ex:
-     * Normal export: export TodoList; export const checked = 10;
-     * --> Khi xài normal export, thì phải import component này vào componet khác
-     * qua syntax sau:
-     *              import {TodoList} from './Components/TodoList';
-     *              import {TodoList, checked} from ......
-     *              ---> normal import thì export dưới dạng object {}
-     *  */ 
