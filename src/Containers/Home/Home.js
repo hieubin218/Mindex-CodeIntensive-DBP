@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import SearchUsers from '../../Components/SeachUsers/SearchUsers';
-import axios from "axios";
 import UsersList from '../../Components/UsersList/UsersList';
-
+import UserAPI from '../../Services/UserAPI';
 
 
 class Home extends Component {
@@ -19,23 +18,16 @@ class Home extends Component {
         // Promise (pending) state ==> cần then và catch 
 
 
-    onFetchUsers = (search) => {
+    onFetchUsers = async (search) => {
         // fetch User (Dùng Axios)
-        axios
-            .get(`https://api.github.com/search/users?q=${search}`)
-            .then((response) => {
-                console.log(response)
-            
-                // this.setState({
-                //     // Find the an item {id, name,..} of items 
-                //     users: response.data.items,
-                // });
-            }).catch((error) => {
-                throw(error);
-            })
-
-        // Set State 
-
+        try {
+           const response = await UserAPI.fetchUsers(search);
+           this.setState({
+               users: response.data.items,
+           });
+        } catch (error) {
+            throw(error);
+        }
     };
 
     /** Solution 2: async
