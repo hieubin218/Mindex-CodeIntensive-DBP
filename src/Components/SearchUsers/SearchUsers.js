@@ -27,7 +27,7 @@ class SearchUsers extends Component {
 
     // OnSubmit transmits back to Home Component
     onSubmitSearchUser = (event) => {
-        event.preventdefault();
+        event.preventDefault();
 
         // Home Component will execute fetchUser() method --> then set State
         this.props.onFetchUsers(this.state.search);
