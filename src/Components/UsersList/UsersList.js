@@ -9,7 +9,7 @@ class UsersList extends Component {
     render() {
         const {users} = this.props;
         return (
-            <div className="row">
+            <div className="row" style={{marginTop: "60px"}}>
                 {
                     users.map((userItem, index) => {
                         return (
@@ -17,7 +17,7 @@ class UsersList extends Component {
                         )
                     })
 
-                }
+                } 
             </div>
         )
     }
