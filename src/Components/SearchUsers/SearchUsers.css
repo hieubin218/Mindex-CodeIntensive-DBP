@@ -1,0 +1,17 @@
+.search .search_input{
+    width: 100%;
+    padding: 8px;
+    outline: none;
+
+}
+
+.search {
+    margin-top: 32px 0px 60px 0;
+    padding: 16px;
+}
+
+.search_btn {
+    width: 100%;
+    margin-top: 16px;
+
+}
