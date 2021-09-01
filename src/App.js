@@ -9,6 +9,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Home from "./Containers/Home/Home";
 import About from "./Containers/About";
 import Navbar from "./Layouts/Navbar/Navbar";
+import UserDetail from "./Containers/UserDetail/UserDetail";
 
 
 class App extends Component {
@@ -30,6 +31,8 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
+            <Route path="/users/:login" component={UserDetail} />
+
           </Switch>
 
         </div>
