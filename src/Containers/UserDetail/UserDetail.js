@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-
+import Button from "../../Components/Button/Button";
 
 // in Component (Inspect) --> UserDetail --> props: history, match (param (login), path, url), staticContext
 class UserDetail extends Component {    
@@ -17,10 +17,20 @@ class UserDetail extends Component {
         });
     }
 
+    // Button Back to Home -> history.push will direct to other page
+    onBacktoHome = () => {
+        this.props.history.push("/");
+        // this.props.history.history.goBack();
+    }
+
     render() {
         return (
             <div>
-            User UserDetail
+                <Button label="back to Home" 
+                        onClick={this.onBacktoHome}
+                        color="success"
+                        />
+                        User UserDetail
                 
             </div>
         );
@@ -28,3 +38,6 @@ class UserDetail extends Component {
 }
 
 export default UserDetail;
+
+// Use <a href=""> for External Link
+// Use <Link to=""> for Internal Link
