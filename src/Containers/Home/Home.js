@@ -1,54 +1,38 @@
 import React, { Component } from 'react';
-import SearchUsers from '../../Components/SeachUsers/SearchUsers';
-import UsersList from '../../Components/UsersList/UsersList';
 import UserAPI from '../../Services/UserAPI';
-
+import UsersList from '../../Components/UsersList/UsersList';
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             users: [],
+            isLoading: false,
         };
     };
 
-
-    // search: username input from user
-        // Request Data from Axios: Response là cái Promise nhận về
-        // Promise (pending) state ==> cần then và catch 
-
-
-    onFetchUsers = async (search) => {
-        // fetch User (Dùng Axios)
+    // Mới vào Home Page --> lấy dữ liệu về --> Call API trong componentDidMount
+    // Call API requires a proper services
+    // Cấu trúc response (object) khác nhau --> Nên test API trả về trước 
+    async componentDidMount() {
         try {
-           const response = await UserAPI.fetchUsers(search);
-           this.setState({
-               users: response.data.items,
-           });
-        } catch (error) {
-            throw(error);
+            this.setState({
+                isLoading: true,
+            })
+            const response = await UserAPI.fetchUsers();
+            this.setState({
+                users: response.data,
+                isLoading: false,
+            });
+        } catch(error) {
+            console.log(error);
         }
-    };
-
-    /** Solution 2: async
-     * fetchUser = async (search) => {
-     * try {
-     *      const response = await axios.get(`...`)
-     * };
-     * 
-     * this.setState({
-     *  users: response.data.items,
-     * });
-     * catch (error) {
-     *      throw(error)}               
-     * } 
-     * */ 
+    }
 
     render() {
         const {users} = this.state;
         return (
             <div>
-                <SearchUsers onFetchUsers={this.onFetchUsers}/>
                 <UsersList users={users} />
                 
             </div>
