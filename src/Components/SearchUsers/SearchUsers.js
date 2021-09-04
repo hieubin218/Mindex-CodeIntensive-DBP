@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import "./SearchUsers.css";
-
+import Button from "../Button/Button";
 // Step 1: Request API (extract data)
 // Step 2: Truyền Data ra ngoài Component Cha 
 // Step 3: Render giao diện ở Component con
 
 
-// SearchUser trong Home page
+// SearchUser trong Home pag e
 // Home
     // SearchUsers
     // UsersList
@@ -39,6 +39,7 @@ class SearchUsers extends Component {
 
     render() {
         const {search} = this.state;
+        const {isShowButtonClear, onClearUsers} = this.props;
         return (
             <div className="search">
                 <form onSubmit={this.onSubmitSearchUser}>
@@ -49,10 +50,32 @@ class SearchUsers extends Component {
                             onChange={this.onSearchUserChange} 
                     />
 
-                    <button type="submit" 
+
+                    <Button label="search" type="submit" color="primary" />
+
+                    {/* <button type="submit" 
                             className="btn btn-primary search_btn">
                             Search
-                    </button>
+                    </button> */}
+
+
+                    {
+                        isShowButtonClear && (
+                            /* <button type="submit" 
+                                className="btn btn-danger search_btn"
+                                onClick={onClearUsers}>
+                                Clear Users
+                            </button> */
+
+                            <Button 
+                                label="Clear Users" 
+                                type="button" 
+                                color="danger"
+                                onClick={onClearUsers} />
+
+                        )
+                    }
+
                 </form>
             </div>
            
@@ -61,3 +84,5 @@ class SearchUsers extends Component {
 }
 
 export default SearchUsers;
+
+// Default Values for Props
