@@ -5,10 +5,16 @@ const baseURL = "https://api.github.com";
 // call UserAPI.onFetchUsers and transmit a value in it
 // Object {function}: value of Object is a function
 const UserAPI = {
-    fetchUsers: (search) => {
+    searchUser: (search) => {
         return axios.get(`${baseURL}/search/users?q=${search}`);
 
     },
+
+    // Add More key and services
+    fetchUsers: () => {
+        return axios.get(`${baseURL}/users`); // return Promise
+    }
+
     
 };
 export default UserAPI;
