@@ -13,6 +13,11 @@ const UserAPI = {
     // Add More key and services
     fetchUsers: () => {
         return axios.get(`${baseURL}/users`); // return Promise
+    },
+
+    // User Repositories
+    searchUserRepo: (UserRepo) => {
+        return axios.get(`${baseURL}/users/${UserRepo}/repos`);
     }
 
     
