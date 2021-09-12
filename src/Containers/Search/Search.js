@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import SearchUsers from '../../Components/SeachUsers/SearchUsers';
+import SearchUsers from "../../Components/SearchUsers/SearchUsers";
 import UsersList from '../../Components/UsersList/UsersList';
 import UserAPI from '../../Services/UserAPI';
-import Alert from "../../Layouts/Alert/Alert";
-
+import Alert from "../../Layouts/ALert/Alert";
 
 class Search extends Component {
     constructor(props) {
@@ -95,6 +94,7 @@ class Search extends Component {
                              onClearUsers={this.onClearUsers}
 
                 />
+                
                 <UsersList users={users} isLoading={isLoading} />
                 
             </div>
