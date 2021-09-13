@@ -4,8 +4,8 @@ class LinkDetail extends Component {
     constructor(props) {
         super(props); 
         this.state={
-            LinkInput: [],
-        }
+            LinkInput: "",
+        };
     }
 
     onChangeUserInput = (event) => {
@@ -15,19 +15,22 @@ class LinkDetail extends Component {
 
     }
 
-    onSearchUserInput = (event) => {
+    onSubmitSearchUser = (event) => {
         event.preventDefault();
-       
+        this.props.onFetchUsers(this.state.LinkInput);
+       this.setState({
+           search: "",
+       });
 
     }
 
     render() {
-        const {onSearchLink} = this.props;
+        const {LinkInput} = this.state;
         return (
             <div>
                 <form className="LinkInput" 
                       style={{display: "flex"}}
-                      onSubmit={this.onSearchUserInput}
+                      onSubmit={this.onSubmitSearchUser}
                     >
 
                     <label> Enter a Link </label>
@@ -35,7 +38,7 @@ class LinkDetail extends Component {
                         <input type="text"
                                className="textBox"
                                name="LinkInput"
-                               value={this.state.LinkInput}
+                               value={LinkInput}
                                onChange={this.onChangeUserInput}
                                placeholder="Here....."
                         >
@@ -44,27 +47,24 @@ class LinkDetail extends Component {
 
                     <span>
                         <button type="submit"
+                                label="search"
                                 className="btn btn-primary"
-                                onClick={() => onSearchLink(this.state)}
                                 >
-                            Search
+                            Submit
                         </button>
                     </span>
                 </form>
 
                 <span style={{marginTop: "30px"}}>
                     <label>Short Demain: </label>
-                    <button className="shrtco.de" type="button">
-                        shrtco.de
-                    </button>
-
-                    <button className="9qr.de" type="button">
-                        9qr.de
-                    </button>
-
-                    <button className="shiny.link" type="button">
-                        shiny.link
-                    </button>
+                    <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" defaultChecked />
+                        <label className="btn btn-outline-primary" htmlFor="btnradio1">shrtco.de</label>
+                        <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
+                        <label className="btn btn-outline-primary" htmlFor="btnradio2">9qr.de</label>
+                        <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" />
+                        <label className="btn btn-outline-primary" htmlFor="btnradio3">shiny.link</label>
+                    </div>
                 </span>
                 
             </div>

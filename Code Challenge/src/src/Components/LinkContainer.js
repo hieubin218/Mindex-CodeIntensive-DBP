@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LinkDetail from './LinkDetail';
 import "./LinkContainer.css";
 import axios from "axios";
+import LinkGenegrate from './LinkGenegrate';
 
 
 class LinkShorter extends Component {
@@ -9,24 +10,28 @@ class LinkShorter extends Component {
         users: [],
     }
 
-    onSearchLink = (user) => {
-        this.setState({
-            users: [...this.state.users, user],
-        })
-    }
 
-    onFetchAPI = (search) => {
+    // Fetch API by tool
+    onFetchUsers = async (search) => {
         const baseURL = "https://api.shrtco.de/v2";
-        const response = axios.get(`${baseURL}/shorten?url=${search}/very/long/link.html`);
-    }
+        try {
+            const response = await axios.get(`${baseURL}/shorten?url=${search}/very/long/link.html`);
+        
+            this.setState({
+                users: response.data.result.full_short_link,
+            });
+        } catch(error) {
+            throw(error);
+        }
+    };
 
     render() {
         return (
             <div className="LinkContainer">
                 <h3>Link Shortener</h3>
 
-                <LinkDetail onSearchLink={this.onSearchLink}/>
-                
+                <LinkDetail onFetchUsers={this.onFetchUsers}/>
+                <LinkGenegrate users={this.state.users}/>
             </div>
         );
     }
