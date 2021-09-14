@@ -6,11 +6,9 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 // Route: Render component khi match với path
 // Switch: chỉ render route đầu tiên khi match
 // Link: giống như link nhưng có thêm active classnames
-import Home from "./Containers/Home/Home";
-import About from "./Containers/About";
-import Navbar from "./Layouts/Navbar/Navbar";
-import UserDetail from "./Containers/UserDetail/UserDetail";
-import Search from "./Containers/Search/Search";
+import MovieDetail from "./Containers/MovieDetail/MovieDetail";
+import MovieHomePage from "./Containers/MovieHomePage/HomePage";
+import MovieNavbar from "./Layouts/Navbar/MovieNavbar";
 
 
 class App extends Component {
@@ -24,16 +22,17 @@ class App extends Component {
       // Những Component không thay đổi (vd: navbar) --> bỏ ngoài <Switch>
 
       <BrowserRouter>
-        <Navbar />
+        <MovieNavbar />
 
         {/**Cách đều hai bên page thì nên bọc vào div */}
-        <div className="container" >
-
+        <div className="container" style={{maxWidth:"100%",
+                                          paddingRight: "0px",
+                                          paddingLeft: "0px"}} >
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/search" exact component={Search} />
-            <Route path="/about" component={About} />
-            <Route path="/users/:login" component={UserDetail} />
+            <Route path="/home" exact component={MovieHomePage} />
+            <Route path="/search" component={MovieDetail} />
+            {/* <Route path="/about" component={About} /> */}
+            {/* <Route path="/users/:login" component={UserDetail} /> */}
 
           </Switch>
 
