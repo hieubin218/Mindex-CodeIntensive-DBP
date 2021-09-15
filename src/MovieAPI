@@ -1,0 +1,9 @@
+// Movie API for Popular Movies:
+  https://api.themoviedb.org/3/movie/popular?api_key=a32287ddc2296da6ef51bbca9953037d
+
+// Movie API for Upcoming Movies:
+  https://api.themoviedb.org/3/movie/upcoming?api_key=a32287ddc2296da6ef51bbca9953037d
+  
+// Movie API for Top Rated Movies:
+  https://api.themoviedb.org/3/movie/top_rated?api_key=a32287ddc2296da6ef51bbca9953037d
+  
