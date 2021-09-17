@@ -1,8 +1,0 @@
-1. Covid-19 API of golbal and by country - Update every day (New Cases, Death, Recovery)
-  //  https://api.covid19api.com/summary
-  
-2. Covid-19 API of total death and total confirmed, recovery cases from the beginning of covid outbreak
-  // https://api.covid19api.com/live/country/${country}/status/confirmed
-  // Example: https://api.covid19api.com/live/country/vietnam/status/confirmed
-
-3.  
