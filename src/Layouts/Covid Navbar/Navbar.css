@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 40px;
+    
+   
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 50%;
+   
+}
+
+.header {
+    display: flex;
+}
+
+
+
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    color: orange;
+}
+
+.navbar ul li a {
+   color: white;
+   margin-right: 16px; 
+}
