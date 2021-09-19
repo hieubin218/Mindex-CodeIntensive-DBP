@@ -5,7 +5,10 @@ import CovidAPI from "../../Services/CovidAPI";
 import CovidCard from "../../Components/CovidCard/CovidCard";
 import CountriesTotalCases from "../../Components/CountriesTotalCases/CountriesTotalCases";
 import CovidChart from '../../Components/CovidChart';
+import CountriesDropBar from '../../Components/CountriesDropBar';
 
+
+import {Spin, Col, Row} from "antd";
 
 
 export default class CovidDashboard extends Component {
@@ -17,6 +20,7 @@ export default class CovidDashboard extends Component {
         };
     };
 
+    
     getAllCountries = async () => {
         try {
             this.setState({
@@ -34,9 +38,19 @@ export default class CovidDashboard extends Component {
 
 
     render() {
+        const {isLoading} = this.state;
         return (
             <div>
+                {
+                    isLoading && (
+                        <div className="loading">
+                            <Spin size="large" />
+                            <p>Loading...Please Wait!</p>
+                        </div>
+                    )
+                }
                 
+                <CountriesDropBar />
                 <CovidCard />
                 <CountriesTotalCases />
                 <CovidChart />
