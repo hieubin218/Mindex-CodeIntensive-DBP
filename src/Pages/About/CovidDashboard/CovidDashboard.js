@@ -6,9 +6,8 @@ import CovidAPI from "../../Services/CovidAPI";
 
 import CountriesDropBar from '../../Components/SelectedCountriesDropBar/CountriesDropBar';
 import CovidCard from "../../Components/CovidCard/CovidCard";
-import CountriesTotalCases from "../../Components/CountriesTotalCases/CountriesTotalCases";
+// import CountriesTotalCases from "../../Components/CountriesTotalCases/CountriesTotalCases";
 import CovidChart from '../../Components/SummaryChartMap/PlatFormContainer';
-import {Spin, Col, Row} from "antd";
 
 
 // axios is a Promise -> use method Then to get data from API
@@ -17,6 +16,10 @@ import {Spin, Col, Row} from "antd";
 const CovidDashboard = () => {
     // Set default state and default setState
     const [countries, setCountries] = useState([]);
+    // Create new state when user change country -> đựng API của country mới 
+    const [selectedCountryID, setSelectedCountryID] = useState("");
+
+    const [countryReport, setCountryReport] = useState([]);
 
 
 
@@ -30,20 +33,41 @@ const CovidDashboard = () => {
     }, [] );
 
 
-    // 
+    // set by the user dang lua chon country
     const onHandleSelectedCountry = (event) => {
-        console.log(event)
+        setSelectedCountryID(event.target.value);
+    }; 
 
-        // call API
-        // onGetReportCountry()
 
-    }
+    useEffect( () => {
+        const country = countries.find(country => country.ISO2.toLowerCase() === selectedCountryID);
+        let SlugOfCountry = country.Slug;
+        console.log(SlugOfCountry);
+
+        // call API when having the change of selecting country
+        // below function will receive the selected country by user
+        // countryAPI is a Promise --> then()
+        // const countryAPI = CovidAPI.onGetReportCountry(Slug);
+        // countryAPI.then( (response) => {
+        //     setCountryReport(response.data);
+
+        // })
+        // console.log(countryAPI);
+        // countryAPI.then( (response) => {
+        //     // Xoa di item cuoi cung trong array res.data
+        //     response.data.pop();
+        //     setCountryReport(response.data);
+        // }
+        // );
+
+    }, [countries, selectedCountryID] );
 
 
 
     return (
        <>
-        <CountriesDropBar countries={countries} onHandleSelectedCountry={onHandleSelectedCountry} />
+        <CountriesDropBar   countries={countries} 
+                            onHandleSelectedCountry={onHandleSelectedCountry} />
         <CovidCard />
         <CovidChart />
 
