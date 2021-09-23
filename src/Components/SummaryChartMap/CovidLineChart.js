@@ -39,12 +39,12 @@ const generatedOptions = (data) => {
             useHTML: true,
         },
         // Quan trọng: Dữ liệu để truyền trên Line Chart 
-        series: [
-            {
-                name: "Total Cases",
-                data: data.map((item) => item.Confirmed),
-            },
-        ]
+        // series: [
+        //     {
+        //         name: "Total Cases",
+        //         data: data.map((item) => item.Confirmed),
+        //     },
+        // ]
 
     }
 
