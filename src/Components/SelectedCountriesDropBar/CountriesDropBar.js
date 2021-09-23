@@ -25,10 +25,9 @@ const CountriesDropBar = ({value, onHandleSelectedCountry, countries}) => {
 
                             {
                                 countries.map((country) => {
-                                    const {Country, ISO2} = country;
                                 return (
-                                    <option value={ISO2}>
-                                        {Country}
+                                    <option value={country.ISO2.toLowerCase()}>
+                                        {country.Country}
                                     </option>
                                 )
                                 })
