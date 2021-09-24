@@ -4,7 +4,7 @@ import { FormControl, InputLabel, NativeSelect, FormHelperText } from "@material
 
 
 // Props value và onHandleSelectedCountry được truyền từ Component Cha vào Compt Con 
-const CountriesDropBar = ({value, onHandleSelectedCountry, countries}) => {
+const CountriesDropBar = ({selectedCountryId, onHandleSelectedCountry, countries}) => {
     return (
         <FormControl style={{marginTop: "30px"}}>
 
@@ -16,18 +16,20 @@ const CountriesDropBar = ({value, onHandleSelectedCountry, countries}) => {
             {/* <NativeSelect> tag has attribute value, onChange,... */}
             {/*get id from inputProps and stick in htmlFor to output the country information* */}
 
-            <NativeSelect value="value"
+            {/** value={} là giá trị của dropbar khi user chọn country và display trên dropbar */}
+
+            <NativeSelect value={selectedCountryId}
                           onChange={onHandleSelectedCountry}
                           inputProps={{
                               name: "country",
-                              id: "country-selector"
+                              id: "country-selector",
                           }}>
 
                             {
-                                countries.map((country) => {
+                                countries.map(({Country, ISO2}) => {
                                 return (
-                                    <option value={country.ISO2.toLowerCase()}>
-                                        {country.Country}
+                                    <option key={ISO2} value={ISO2.toLowerCase()}>
+                                        {Country}
                                     </option>
                                 )
                                 })
