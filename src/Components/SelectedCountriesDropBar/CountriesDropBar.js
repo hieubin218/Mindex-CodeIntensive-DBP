@@ -54,3 +54,38 @@ export default CountriesDropBar;
  * thuộc tính Shrink trong <InputLabel> có tác dụng làm label thu nhỏ lại
  * cần import những thẻ tag vào @material-UI 
  */
+
+
+
+
+// const CountriesDropBar = (props) => {
+//     // receive props countries [] from parents component
+//     const {countries, isLoading, onHandleSelectedCountry} = props;
+   
+
+//     return (
+//         <div>
+//             <select
+//                     style={{width: "220px",
+//                             height: "40px"}}
+//                     placehoder="Select a country"
+//                     defaultValue="vietnam"
+//                     onChange={() => onHandleSelectedCountry}
+//             >
+//                 {
+//                     countries &&
+//                         countries.map((eachCountry) => {
+//                             // Extract key value from received props
+//                             const {Slug, Country} = eachCountry;
+//                             return (
+//                                 <option key={Slug} value={Slug}>
+//                                     {Country}
+//                                 </option>
+//                             );
+//                         })
+//                 }      
+//             </select>
+//         </div>
+//     )
+// }
+// export default CountriesDropBar;
