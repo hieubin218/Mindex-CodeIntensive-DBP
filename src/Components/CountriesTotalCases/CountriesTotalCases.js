@@ -1,4 +1,3 @@
-import { indexOf } from "lodash";
 import React from "react";
 import "./Countries.css";
 
@@ -25,7 +24,7 @@ function CoutriesTotalCases({countriesSummary}) {
                             return (
                                 <tr className="text-center" key={index}>
                                     <td>
-                                        <img src="..." alt="countryFlag"></img>
+                                        <img src={`https://flagcdn.com/16x12/${code}.png`} alt="countryFlag"></img>
                                     </td>
                                     <td>
                                         <a href={`country/${code}`} className="location">{Country}</a>
@@ -37,10 +36,9 @@ function CoutriesTotalCases({countriesSummary}) {
                         })
 
                         ) : (
-                            <p>Ups!! Something wrong! Please Reload the Page or contact developer</p>
+                            <p> Ups!! Something wrong! Please Reload the Page or contact developer</p>
                         )
                     }
-                    
                 </tbody>
             </table>
 
