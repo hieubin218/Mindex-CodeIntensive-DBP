@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useMemo} from 'react'
-import "./CovidDashboard.css";
+// import "./CovidDashboard.css";
+import CountriesToTalCases from "../../Components/CountriesTotalCases/CountriesTotalCases";
 import CovidAPI from "../../Services/CovidAPI";
 import CountriesDropBar from '../../Components/SelectedCountriesDropBar/CountriesDropBar';
 import CardContainer from "../../Components/CovidCard/CardContainer";
@@ -9,7 +10,6 @@ import { Typography, Container } from '@material-ui/core';
 import moment from 'moment';
 
 
-// moment.locale("vi")
 
 // axios is a Promise -> use method Then to get data from API
 const CovidDashboard = () => {
@@ -18,11 +18,12 @@ const CovidDashboard = () => {
     // Create new state when user change country -> đựng API của country mới 
     const [selectedCountryId, setSelectedCountryId] = useState('');
 
-    // Spining được loading 
     const [isLoading, setIsLoading] = useState(false);
 
     // Lâý dữ liệu trả về từ API của country nhất định và được lưu trữ ở đây 
     const [countryData, setCountryData] = useState([]);
+
+    const [countriesSummary, setCountriesSummary] = useState([]);
 
 
 
@@ -35,8 +36,6 @@ const CovidDashboard = () => {
 
             const countries = sortBy(response.data, "Country");
             setCountries(countries);
-
-
 
             // set default selected Country when the page first lis loaded
             setSelectedCountryId("vn");
@@ -107,6 +106,17 @@ const CovidDashboard = () => {
     }
     return [];
     }, [countryData]);
+
+
+    // Get all countries Summary
+    useEffect( () => {
+        const AllCountriesSummary = async () => {
+            const response = await CovidAPI.onGetCountriesSummary();
+            const countriesSum = response.data.Countries;
+            setCountriesSummary(countriesSum);
+        }
+        AllCountriesSummary();
+    }, [])
     
 
     return (
@@ -114,7 +124,6 @@ const CovidDashboard = () => {
             <Typography variant="h2" component="h2">
             Covid Statistics By Day
             </Typography>
-
             <Typography>{moment().format("LLLL")}</Typography>
 
 
@@ -123,6 +132,10 @@ const CovidDashboard = () => {
                                 selectedCountryId={selectedCountryId} />
             <CardContainer  CovidCountrySummaryData={CovidCountrySummaryData} />
             <ChartMapContainer countryData={countryData} selectedCountryId={selectedCountryId} />
+
+            <CountriesToTalCases countriesSummary={countriesSummary}/>
+
+
        </Container>
     )
 };
