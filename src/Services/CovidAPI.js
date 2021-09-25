@@ -13,7 +13,14 @@ const CovidAPI = {
 
     onGetReportCountry: (country) => {
         return axios.get(`${baseURL}/dayone/country/${country}`);
+    },
 
+    onGetFlagCountry: (flag) => {
+        return axios.get(`https://flagcdn.com/16x12/${flag}.png`);
+    },
+
+    onGetCountriesSummary: (all) => {
+        return axios.get("https://api.covid19api.com/summary")
     }
 };
 
